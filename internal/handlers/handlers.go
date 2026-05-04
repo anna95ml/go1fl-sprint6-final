@@ -25,7 +25,7 @@ import (
 
 func MainHandle(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	http.ServeFile(w, r, "../index.html") //сам запишет статус 200, если файл найден, или 404
+	http.ServeFile(w, r, "./index.html") //сам запишет статус 200, если файл найден, или 404
 }
 
 func UploadHandle(res http.ResponseWriter, req *http.Request) {
@@ -78,7 +78,7 @@ func UploadHandle(res http.ResponseWriter, req *http.Request) {
 	//fmt.Println(filename)
 
 	//открываем директорию для загрузок
-	root, err := os.OpenRoot("../uploads")
+	root, err := os.OpenRoot("./uploads")
 	if err != nil {
 		http.Error(res, "внутренняя ошибка"+err.Error(), http.StatusInternalServerError)
 		return
@@ -100,7 +100,7 @@ func UploadHandle(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 	//возвращаем результат конвертации строки.
-	res.Header().Set("Content-Type", "text/plain; charset=utf-8")
+	res.Header().Set("Content-Type", "text/html; charset=utf-8")
 	res.WriteHeader(http.StatusOK)
 	res.Write([]byte(result))
 }
