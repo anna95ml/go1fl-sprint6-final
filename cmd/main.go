@@ -11,7 +11,7 @@ func main() {
 	logger := log.Default()
 	//fmt.Println("Создали логгер")
 
-	srv := server.NewServer(logger)
+	srv := server.CreateServer(logger)
 	//fmt.Println("Создали сервер из логгера")
 
 	//fmt.Println("Запускаем сервер")
